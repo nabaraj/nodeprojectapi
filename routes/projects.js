@@ -1,7 +1,6 @@
 var express = require('express');
 const { body, validationResult } = require('express-validator');
 var router = express.Router();
-const { randomBytes } = require('crypto');
 var data = require('../data/projectData');
 
 
@@ -45,7 +44,7 @@ function(req, res, next) {
     }
 
 
-  const id = randomBytes(4).toString('hex');
+  const id = Math.floor(1000 + Math.random() * 9000);
   // console.log("req body ", req);
 //   console.log(req.body);
   const { name, description,startdate, employees } = req.body;

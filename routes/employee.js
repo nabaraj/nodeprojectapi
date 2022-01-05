@@ -1,7 +1,6 @@
 var express = require("express");
 const { body, validationResult } = require("express-validator");
 var router = express.Router();
-const { randomBytes } = require("crypto");
 
 var employeeData = require("../data/employeeData");
 
@@ -32,7 +31,7 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const empid = randomBytes(4).toString('hex');
+    const empid = Math.random().toString(36).substr(2, 6);
     const { name } = req.body;
 
     employeeData[empid] = {
