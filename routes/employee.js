@@ -5,7 +5,7 @@ var router = express.Router();
 var employeeData = require("../data/employeeData");
 
 router.get("/", function (req, res, next) {
-  res.send(employeeData);
+  res.send(Object.values(employeeData));
 });
 
 router.get("/getone", function (req, res, next) {
