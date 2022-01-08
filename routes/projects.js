@@ -83,21 +83,7 @@ function(req, res, next) {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
-
-  
-  // console.log("req body ", req);
-//   console.log(req.body);
   const {id, employees } = req.body;
-  console.log(id);
-//   console.log('$$$$$$###### loading ');
-  // data[id] = {
-  //   id,
-  //   name, 
-  //   description,
-  //   startdate,
-  //   employees
-  // }
   if(!id || !data[id]){
     res.status(400).send('No match found')
   }else{
@@ -112,21 +98,16 @@ function(req, res, next) {
 });
 
 router.delete('/removeAll', function(req, res, next){
-    console.log('removeall')
+    // console.log('removeall')
     data = {};
     res.send("projects removed successfully");
 });
 
 router.delete('/removepost', function(req, res, next){
-    console.log("removepost")
-    console.log(data);
     let projectId = req.body.id;
-    //data.indexOf(req.body.id);
     if(data[projectId]){
         delete data[projectId]
     }
-    // data = [];
-    console.log(data);
     res.send(data);
 })
 
