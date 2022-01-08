@@ -5,7 +5,7 @@ var data = require('../data/projectData');
 
 
 router.get('/', function(req, res, next) {
-  res.send(data);
+  res.send(Object.values(data));
 });
 
 router.get('/getone', function(req, res, next){
@@ -89,7 +89,7 @@ function(req, res, next) {
   // console.log("req body ", req);
 //   console.log(req.body);
   const {id, employees } = req.body;
-
+  console.log(id);
 //   console.log('$$$$$$###### loading ');
   // data[id] = {
   //   id,
@@ -102,11 +102,9 @@ function(req, res, next) {
     res.status(400).send('No match found')
   }else{
     Object.keys(data[id]).map(item=>{
-      if(item==='employees'){
-        data[id][item].push(employees)
-      }else{
+      
         data[id][item] = req.body[item] || data[id][item];
-      }
+      
     })
   }
   
